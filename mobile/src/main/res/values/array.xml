@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array
+        name="notification_reply_choices">
+        <item>Delay, on the way!</item>
+        <item>Sick, not assistance.</item>
+        <item>Family situation, without details.</item>
+    </string-array>
+</resources>

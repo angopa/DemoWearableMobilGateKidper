@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Gatekidper</string>
+    <string name="send_notification">Send Notification</string>
+    <string name="no_assistance">Not assistance register for:</string>
+    <string name="notification_prompt_reply">Response the notification by...</string>
+    <string name="notification_reply">Reply</string>
+</resources>
