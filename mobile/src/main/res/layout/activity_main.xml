@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,24 +8,43 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
     tools:context="demos.android.com.craneo.demowearablemobilgatekidper.MainActivity">
+
+    <Button
+        android:id="@+id/createNormalNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/create_new_notification"/>
+
+    <Button
+        android:id="@+id/createMultiChooseNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/create_multiple_choose_notification"/>
+
+    <Button
+        android:id="@+id/createAlertNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/create_alert_notification"/>
 
     <TextView
         android:id="@+id/textView"
-        android:layout_above="@+id/button"
+        android:layout_above="@+id/sentNotification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Response" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/sentNotification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:onClick="sentNotification"
         android:text="@string/send_notification"/>
-
-
-</RelativeLayout>
+</LinearLayout>

@@ -1,7 +1,26 @@
 <resources>
     <string name="app_name">Gatekidper</string>
+    <!--MainActivity-->
     <string name="send_notification">Send Notification</string>
-    <string name="no_assistance">Not assistance register for:</string>
+    <string name="create_new_notification">Simple Notification</string>
+    <string name="create_multiple_choose_notification">Multiple Choose Notification</string>
+    <string name="create_alert_notification">Urgent Notification</string>
+
+
+    <!--Wearable strings-->
     <string name="notification_prompt_reply">Response the notification by...</string>
+    <string name="no_assistance">Not assistance register for:</string>
     <string name="notification_reply">Reply</string>
+
+    <!--SettingActivity-->
+    <string name="pref_new_message">Create Notification</string>
+    <string name="pref_header_notifications">Notification Configuration</string>
+
+    <!--Create a new message-->
+    <string name="pref_default_display_message">Please Insert the message</string>
+    <string name="pref_title_display_message">New Message</string>
+
+
+    <!--Menu-->
+    <string name="action_settings">Setting</string>
 </resources>

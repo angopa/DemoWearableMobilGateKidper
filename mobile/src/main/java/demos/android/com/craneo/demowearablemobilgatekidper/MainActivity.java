@@ -19,6 +19,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -35,33 +37,63 @@ import com.google.android.gms.wearable.Wearable;
 
 import java.util.List;
 
+/**
+ * This activity is used to config the wearable message, it has three different flavors:
+ * Normal Message: The student arrives or lefts the school, and just inform about it.
+ * Multiple chooses: The system ask why the student don't arrive jet at school.
+ * Alert Message: The system trigger an alert that alert the parent about some unusual situation.
+ *
+ */
 public class MainActivity extends AppCompatActivity
     implements GoogleApiClient.ConnectionCallbacks,
-    GoogleApiClient.OnConnectionFailedListener {
+    GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
-        private static TextView textView;
-        private static final String TAG = "MainActivity";
-        private Node mNode;
-        private GoogleApiClient googleApiClient;
-        private Kid kid;
+    private static TextView textView;
+    private static final String TAG = "MainActivity";
+    private Node mNode;
+    private GoogleApiClient googleApiClient;
+    private Kid kid;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            initializeComponents();
-            List<Kid> kids = DataProvider.kidsList;
-            kid = kids.get(1);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initializeComponents();
+        List<Kid> kids = DataProvider.kidsList;
+        kid = kids.get(0);
 
-            googleApiClient = new GoogleApiClient.Builder(this)
-                    .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this)
-                    .addApi(Wearable.API)
-                    .build();
-        }
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(Wearable.API)
+                .build();
+    }
 
     private void initializeComponents() {
         textView = (TextView) findViewById(R.id.textView);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingActivity.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void sentNotification(View view) {
@@ -163,5 +195,24 @@ public class MainActivity extends AppCompatActivity
 
     public static void putOption(String message) {
         textView.setText(message);
+    }
+
+    public void createNotification(View view){
+        Intent intent = new Intent(this, SettingActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.createNormalNotification:
+                break;
+            case R.id.createMultiChooseNotification:
+                break;
+            case R.id.createAlertNotification:
+                break;
+            case R.id.sentNotification:
+                break;
+        }
     }
 }
