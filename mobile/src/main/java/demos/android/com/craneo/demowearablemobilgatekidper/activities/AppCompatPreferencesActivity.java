@@ -1,4 +1,4 @@
-package demos.android.com.craneo.demowearablemobilgatekidper;
+package demos.android.com.craneo.demowearablemobilgatekidper.activities;
 
 import android.animation.Animator;
 import android.annotation.TargetApi;

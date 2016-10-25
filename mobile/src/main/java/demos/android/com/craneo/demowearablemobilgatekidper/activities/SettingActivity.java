@@ -1,13 +1,11 @@
-package demos.android.com.craneo.demowearablemobilgatekidper;
+package demos.android.com.craneo.demowearablemobilgatekidper.activities;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -15,11 +13,13 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.preference.RingtonePreference;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatDelegate;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.List;
+
+import demos.android.com.craneo.demowearablemobilgatekidper.R;
 
 /**
  * Created by crane on 10/19/2016.
@@ -136,13 +136,37 @@ public class SettingActivity extends AppCompatPreferencesActivity {
         loadHeadersFromResource(R.xml.pref_headers, target);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.home) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
     /**
      * This method stops fragment injection in malicious applications.
      * Make sure to deny any unknown fragments here.
      */
     protected boolean isValidFragment(String fragmentName) {
         return PreferenceFragment.class.getName().equals(fragmentName)
-                || SettingActivity.NotificationPreferencesFragment.class.getName().equals(fragmentName);
+                || SettingActivity.SimpleNotificationFragment.class.getName().equals(fragmentName)
+                || SettingActivity.QuestionNotificationFragment.class.getName().equals(fragmentName)
+                || SettingActivity.AlertNotificationFragment.class.getName().equals(fragmentName);
     }
 
 
@@ -150,14 +174,68 @@ public class SettingActivity extends AppCompatPreferencesActivity {
      * This fragment shows the notification preferences only. It is used when the
      * activity is showing a two-pane settings UI.
      */
-    public static class NotificationPreferencesFragment extends PreferenceFragment {
+    public static class SimpleNotificationFragment extends PreferenceFragment {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_notification);
+            addPreferencesFromResource(R.xml.pref_simple_notif);
             setHasOptionsMenu(true);
 
             bindPreferenceSummaryToValue(findPreference("wearable_short_message"));
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            int id = item.getItemId();
+            if(id == android.R.id.home){
+                startActivity(new Intent(getActivity(), SettingActivity.class));
+                return true;
+            }
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * This fragment shows the notification preferences only. It is used when the
+     * activity is showing a two-pane settings UI.
+     */
+    public static class QuestionNotificationFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_question_notif);
+            setHasOptionsMenu(true);
+
+            bindPreferenceSummaryToValue(findPreference("wearable_choice_message"));
+            bindPreferenceSummaryToValue(findPreference("wearable_option_a"));
+            bindPreferenceSummaryToValue(findPreference("wearable_option_b"));
+            bindPreferenceSummaryToValue(findPreference("wearable_option_c"));
+
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            int id = item.getItemId();
+            if(id == android.R.id.home){
+                startActivity(new Intent(getActivity(), SettingActivity.class));
+                return true;
+            }
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+    /**
+     * This fragment shows the notification preferences only. It is used when the
+     * activity is showing a two-pane settings UI.
+     */
+    public static class AlertNotificationFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_alert_notif);
+            setHasOptionsMenu(true);
+
+            bindPreferenceSummaryToValue(findPreference("wearable_short_alert"));
         }
 
         @Override

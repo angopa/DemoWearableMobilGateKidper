@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--A 'parent preference, wich enables/disables child preferences (below)
-        with checked/unchecked-->
-    <SwitchPreference
-        android:defaultValue="true"
-        android:key="notification_set_new_message"
-        android:title="@string/pref_new_message"/>
-
     <EditTextPreference
         android:capitalize="words"
         android:defaultValue="@string/pref_default_display_message"
         android:inputType="textShortMessage"
-        android:key="wearable_short_message"
+        android:key="wearable_short_alert"
         android:maxLines="2"
         android:selectAllOnFocus="true"
         android:singleLine="false"

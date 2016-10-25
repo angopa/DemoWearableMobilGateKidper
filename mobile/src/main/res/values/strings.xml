@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Gatekidper</string>
     <!--MainActivity-->
-    <string name="send_notification">Send Notification</string>
-    <string name="create_new_notification">Simple Notification</string>
-    <string name="create_multiple_choose_notification">Multiple Choose Notification</string>
-    <string name="create_alert_notification">Urgent Notification</string>
+    <string name="send_simple_notification">Send Simple Notification</string>
+    <string name="send_multi_choice">Send Choice Notification</string>
+    <string name="send_alert">Send Alert</string>
+    <string name="manage_notifications">Set Notifications</string>
 
 
     <!--Wearable strings-->
@@ -14,11 +14,16 @@
 
     <!--SettingActivity-->
     <string name="pref_new_message">Create Notification</string>
-    <string name="pref_header_notifications">Notification Configuration</string>
+    <string name="simple_notifications">Simple Notification</string>
+    <string name="multiple_choose_notifications">Multiple Choose Notification</string>
+    <string name="alert_notifications">Alert Notification</string>
 
     <!--Create a new message-->
     <string name="pref_default_display_message">Please Insert the message</string>
-    <string name="pref_title_display_message">New Message</string>
+    <string name="pref_title_display_message">Insert the new message</string>
+    <string name="pref_choice_a">Insert the choice (a)</string>
+    <string name="pref_choice_b">Insert the choice (b)</string>
+    <string name="pref_choice_c">Insert the choice (c)</string>
 
 
     <!--Menu-->

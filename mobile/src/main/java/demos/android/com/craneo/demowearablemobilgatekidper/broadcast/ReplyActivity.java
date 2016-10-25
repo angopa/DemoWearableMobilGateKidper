@@ -1,4 +1,4 @@
-package demos.android.com.craneo.demowearablemobilgatekidper;
+package demos.android.com.craneo.demowearablemobilgatekidper.broadcast;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -29,7 +29,7 @@ public class ReplyActivity extends BroadcastReceiver {
             if (remoteInput != null){
                 message = remoteInput.getCharSequence(Intent.EXTRA_TEXT).toString();
                 Log.d("ReplyActivity", message);
-                MainActivity.putOption(message);
+
             }
         }
     }

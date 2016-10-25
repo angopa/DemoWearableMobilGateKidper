@@ -1,7 +1,9 @@
-package demos.android.com.craneo.demowearablemobilgatekidper;
+package demos.android.com.craneo.demowearablemobilgatekidper.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import demos.android.com.craneo.demowearablemobilgatekidper.model.Kid;
 
 /**
  * Created by crane on 10/14/2016.
