@@ -6,8 +6,10 @@ import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,10 +36,9 @@ import demos.android.com.craneo.demowearablemobilgatekidper.notification.SimpleN
  * Alert Message: The system trigger an alert that alert the parent about some unusual situation.
  *
  */
-public class MainActivity extends ListActivity
+public class MainActivity extends AppCompatActivity
         implements View.OnClickListener{
 
-    private Button bNewNotf;
     private Button bSendNotf;
     private Button bMultChoice;
     private Button bAlert;
@@ -54,6 +55,7 @@ public class MainActivity extends ListActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initializeComponents();
+        setupActionBar();
 
         simpleNotification = new SimpleNotification(this);
         alertNotification = new AlertNotification(this);
@@ -70,16 +72,22 @@ public class MainActivity extends ListActivity
         kid = kids.get(1);
         ArrayAdapter<Kid> adapter = new ArrayAdapter<Kid>(this,
                 R.layout.item_layout, kids);
-        setListAdapter(adapter);
+        //setListAdapter(adapter);
+    }
+
+    private void setupActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     private void initializeComponents() {
-        bNewNotf = (Button) findViewById(R.id.createNewNotification);
         bSendNotf = (Button) findViewById(R.id.sentSimpleNotification);
         bMultChoice = (Button) findViewById(R.id.sentChoice);
         bAlert = (Button) findViewById(R.id.sentAlert);
 
-        bNewNotf.setOnClickListener(this);
         bSendNotf.setOnClickListener(this);
         bMultChoice.setOnClickListener(this);
         bAlert.setOnClickListener(this);
@@ -101,7 +109,7 @@ public class MainActivity extends ListActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_message_setting) {
             Intent intent = new Intent(this, SettingActivity.class);
             startActivity(intent);
         }
@@ -133,11 +141,6 @@ public class MainActivity extends ListActivity
     public void onClick(View view) {
         Intent intent;
         switch (view.getId()){
-            case R.id.createNewNotification:
-                intent= new Intent(this, SettingActivity.class);
-                startActivity(intent);
-                break;
-
             case R.id.sentSimpleNotification:
                 new SendNotification(this, view, kid,
                         simpleNotification.getMessage(), true);

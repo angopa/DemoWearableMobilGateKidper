@@ -9,6 +9,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/mobile" />
+            <option value="$PROJECT_DIR$/multichoicemodule" />
+            <option value="$PROJECT_DIR$/shared" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

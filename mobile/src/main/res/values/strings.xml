@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Gatekidper</string>
     <!--MainActivity-->
-    <string name="send_simple_notification">Send Simple Notification</string>
-    <string name="send_multi_choice">Send Choice Notification</string>
-    <string name="send_alert">Send Alert</string>
+    <string name="send_simple_notification">Simple Notification</string>
+    <string name="send_multi_choice">Choice Notification</string>
+    <string name="send_alert">Alert</string>
     <string name="manage_notifications">Set Notifications</string>
 
 
@@ -24,6 +24,12 @@
     <string name="pref_choice_a">Insert the choice (a)</string>
     <string name="pref_choice_b">Insert the choice (b)</string>
     <string name="pref_choice_c">Insert the choice (c)</string>
+
+
+    <string name="action_new_student">New Student</string>
+    <string name="action_see_chart">See Chart</string>
+    <string name="action_send_email">Send an E-mail</string>
+    <string name="action_message_setting">Notification Settings</string>
 
 
     <!--Menu-->
